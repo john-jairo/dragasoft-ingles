@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstadoUsuarioCreateDlg" widgetVar="EstadoUsuarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEstadoUsuarioTitle}">
+            <h:form style="text-align: center" id="EstadoUsuarioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estadoUsuarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEstadoUsuarioLabel_idEstadoUsuario}" for="idEstadoUsuario" />
+                        <p:inputText id="idEstadoUsuario" value="#{estadoUsuarioController.selected.idEstadoUsuario}" title="#{bundle.CreateEstadoUsuarioTitle_idEstadoUsuario}" required="true" requiredMessage="#{bundle.CreateEstadoUsuarioRequiredMessage_idEstadoUsuario}"/>
+                        <p:outputLabel value="#{bundle.CreateEstadoUsuarioLabel_estadoUsuario}" for="estadoUsuario" />
+                        <p:inputText id="estadoUsuario" value="#{estadoUsuarioController.selected.estadoUsuario}" title="#{bundle.CreateEstadoUsuarioTitle_estadoUsuario}" required="true" requiredMessage="#{bundle.CreateEstadoUsuarioRequiredMessage_estadoUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{estadoUsuarioController.create}" value="#{bundle.Save}" update="display,:EstadoUsuarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'EstadoUsuarioCreateDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="EstadoUsuarioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

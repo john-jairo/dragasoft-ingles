@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InventarioViewDlg" widgetVar="InventarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInventarioTitle}">
+            <h:form style="text-align: center" id="InventarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{inventarioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInventarioLabel_codigo}"/>
+                        <h:outputText value="#{inventarioController.selected.codigo}" title="#{bundle.ViewInventarioTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_categoria}"/>
+                        <h:outputText value="#{inventarioController.selected.categoria}" title="#{bundle.ViewInventarioTitle_categoria}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_referencia}"/>
+                        <h:outputText value="#{inventarioController.selected.referencia}" title="#{bundle.ViewInventarioTitle_referencia}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_anoFabricacion}"/>
+                        <h:outputText value="#{inventarioController.selected.anoFabricacion}" title="#{bundle.ViewInventarioTitle_anoFabricacion}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_cicloVida}"/>
+                        <h:outputText value="#{inventarioController.selected.cicloVida}" title="#{bundle.ViewInventarioTitle_cicloVida}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_cantidad}"/>
+                        <h:outputText value="#{inventarioController.selected.cantidad}" title="#{bundle.ViewInventarioTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_estadoInventario}"/>
+                        <h:outputText value="#{inventarioController.selected.estadoInventario}" title="#{bundle.ViewInventarioTitle_estadoInventario}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_idUsuario}"/>
+                        <h:outputText value="#{inventarioController.selected.idUsuario}" title="#{bundle.ViewInventarioTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_altura}"/>
+                        <h:outputText value="#{inventarioController.selected.altura}" title="#{bundle.ViewInventarioTitle_altura}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_ancho}"/>
+                        <h:outputText value="#{inventarioController.selected.ancho}" title="#{bundle.ViewInventarioTitle_ancho}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_profundidad}"/>
+                        <h:outputText value="#{inventarioController.selected.profundidad}" title="#{bundle.ViewInventarioTitle_profundidad}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_peso}"/>
+                        <h:outputText value="#{inventarioController.selected.peso}" title="#{bundle.ViewInventarioTitle_peso}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_color}"/>
+                        <h:outputText value="#{inventarioController.selected.color}" title="#{bundle.ViewInventarioTitle_color}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_marcasIdMarca}"/>
+                        <h:outputText value="#{inventarioController.selected.marcasIdMarca}" title="#{bundle.ViewInventarioTitle_marcasIdMarca}"/>
+                        <h:outputText value="#{bundle.ViewInventarioLabel_subCategoria}"/>
+                        <h:outputText value="#{inventarioController.selected.subCategoria}" title="#{bundle.ViewInventarioTitle_subCategoria}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" value="#{bundle.Close}" onclick="InventarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

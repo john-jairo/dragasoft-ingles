@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListJefeAdministrativoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="JefeAdministrativoListForm">
+                <p:panel header="#{bundle.ListJefeAdministrativoTitle}">
+                    <p:dataTable id="datalist" value="#{jefeAdministrativoController.items}" var="item"
+                                 selectionMode="single" selection="#{jefeAdministrativoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.numeroDocumento}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJefeAdministrativoTitle_numeroDocumento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeroDocumento}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJefeAdministrativoTitle_primerNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.primerNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJefeAdministrativoTitle_segundoNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.segundoNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJefeAdministrativoTitle_primerApellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.primerApellido}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJefeAdministrativoTitle_segundoApellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.segundoApellido}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJefeAdministrativoTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJefeAdministrativoTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJefeAdministrativoTitle_tipoDocumentoIdTipoDoc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoDocumentoIdTipoDoc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJefeAdministrativoTitle_usuariosIdUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuariosIdUsuario}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{jefeAdministrativoController.prepareCreate}" update=":JefeAdministrativoCreateForm" oncomplete="PF('JefeAdministrativoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":JefeAdministrativoViewForm" oncomplete="PF('JefeAdministrativoViewDialog').show()" disabled="#{empty jefeAdministrativoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":JefeAdministrativoEditForm" oncomplete="PF('JefeAdministrativoEditDialog').show()" disabled="#{empty jefeAdministrativoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{jefeAdministrativoController.destroy}" update=":growl,datalist" disabled="#{empty jefeAdministrativoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

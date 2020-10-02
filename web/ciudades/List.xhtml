@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCiudadesTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="CiudadesListForm">
+                <p:panel header="#{bundle.ListCiudadesTitle}">
+                    <p:dataTable id="datalist" value="#{ciudadesController.items}" var="item"
+                                 selectionMode="single" selection="#{ciudadesController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.codigoMunicipio}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50" widgetVar="ciudadesBuscar"
+                                 >
+                        
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="search"/>
+                                <p:inputText id="globalFilter" onkeyup="PF('ciudadesBuscar').filter()"
+                                             style="width: 150px;"/>
+                            </p:outputPanel>
+                        </f:facet>
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.codigoMunicipio}" filterStyle="width:100px;" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCiudadesTitle_codigoMunicipio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoMunicipio}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.nombreMunicipio}" filterStyle="width:100px;" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCiudadesTitle_nombreMunicipio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreMunicipio}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{ciudadesController.prepareCreate}" update=":CiudadesCreateForm" oncomplete="PF('CiudadesCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CiudadesViewForm" oncomplete="PF('CiudadesViewDialog').show()" disabled="#{empty ciudadesController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CiudadesEditForm" oncomplete="PF('CiudadesEditDialog').show()" disabled="#{empty ciudadesController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{ciudadesController.destroy}" update=":growl,datalist" disabled="#{empty ciudadesController.selected}"/>
+                        
+                        <a href="http://localhost:8080/reportesPDF/ciudades.jsp?txtparametro="><img style="width: 35px; margin: -8px 0px" src="http://localhost:8080/dragasoft/faces/resources/imagenes/pdf.png"></img></a>
+
+                            <h:commandLink>
+                                <h:graphicImage style="width: 60px; margin: -12px 0px" url="http://localhost:8080/dragasoft/faces/resources/imagenes/excel.png"/>
+                                <p:dataExporter type="xls" target="datalist" fileName="Reporte ciudades"/>
+                            </h:commandLink>
+                            
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

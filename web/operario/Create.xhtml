@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperarioCreateDlg" widgetVar="OperarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateOperarioTitle}">
+            <h:form style="text-align: center" id="OperarioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateOperarioLabel_numeroDocumentoOp}" for="numeroDocumentoOp" />
+                        <p:inputText id="numeroDocumentoOp" value="#{operarioController.selected.numeroDocumentoOp}" title="#{bundle.CreateOperarioTitle_numeroDocumentoOp}" required="true" requiredMessage="#{bundle.CreateOperarioRequiredMessage_numeroDocumentoOp}"/>
+                        <p:outputLabel value="#{bundle.CreateOperarioLabel_primerNombre}" for="primerNombre" />
+                        <p:inputText id="primerNombre" value="#{operarioController.selected.primerNombre}" title="#{bundle.CreateOperarioTitle_primerNombre}" required="true" requiredMessage="#{bundle.CreateOperarioRequiredMessage_primerNombre}"/>
+                        <p:outputLabel value="#{bundle.CreateOperarioLabel_segundoNombre}" for="segundoNombre" />
+                        <p:inputText id="segundoNombre" value="#{operarioController.selected.segundoNombre}" title="#{bundle.CreateOperarioTitle_segundoNombre}" />
+                        <p:outputLabel value="#{bundle.CreateOperarioLabel_primerApellido}" for="primerApellido" />
+                        <p:inputText id="primerApellido" value="#{operarioController.selected.primerApellido}" title="#{bundle.CreateOperarioTitle_primerApellido}" required="true" requiredMessage="#{bundle.CreateOperarioRequiredMessage_primerApellido}"/>
+                        <p:outputLabel value="#{bundle.CreateOperarioLabel_segundoApellido}" for="segundoApellido" />
+                        <p:inputText id="segundoApellido" value="#{operarioController.selected.segundoApellido}" title="#{bundle.CreateOperarioTitle_segundoApellido}" />
+                        <p:outputLabel value="#{bundle.CreateOperarioLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{operarioController.selected.email}" title="#{bundle.CreateOperarioTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateOperarioLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{operarioController.selected.telefono}" title="#{bundle.CreateOperarioTitle_telefono}" required="true" requiredMessage="#{bundle.CreateOperarioRequiredMessage_telefono}"/>
+                        <p:outputLabel value="#{bundle.CreateOperarioLabel_tipoDocumentoIdTipoDoc}" for="tipoDocumentoIdTipoDoc" />
+                        <p:inputText id="tipoDocumentoIdTipoDoc" value="#{operarioController.selected.tipoDocumentoIdTipoDoc}" title="#{bundle.CreateOperarioTitle_tipoDocumentoIdTipoDoc}" required="true" requiredMessage="#{bundle.CreateOperarioRequiredMessage_tipoDocumentoIdTipoDoc}"/>
+                        <p:outputLabel value="#{bundle.CreateOperarioLabel_usuariosIdUsuario}" for="usuariosIdUsuario" />
+                        <p:inputText id="usuariosIdUsuario" value="#{operarioController.selected.usuariosIdUsuario}" title="#{bundle.CreateOperarioTitle_usuariosIdUsuario}" required="true" requiredMessage="#{bundle.CreateOperarioRequiredMessage_usuariosIdUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{operarioController.create}" value="#{bundle.Save}" update="display,:OperarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'OperarioCreateDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="OperarioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

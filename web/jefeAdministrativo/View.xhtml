@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="JefeAdministrativoViewDlg" widgetVar="JefeAdministrativoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewJefeAdministrativoTitle}">
+            <h:form style="text-align: center" id="JefeAdministrativoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{jefeAdministrativoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewJefeAdministrativoLabel_numeroDocumento}"/>
+                        <h:outputText value="#{jefeAdministrativoController.selected.numeroDocumento}" title="#{bundle.ViewJefeAdministrativoTitle_numeroDocumento}"/>
+                        <h:outputText value="#{bundle.ViewJefeAdministrativoLabel_primerNombre}"/>
+                        <h:outputText value="#{jefeAdministrativoController.selected.primerNombre}" title="#{bundle.ViewJefeAdministrativoTitle_primerNombre}"/>
+                        <h:outputText value="#{bundle.ViewJefeAdministrativoLabel_segundoNombre}"/>
+                        <h:outputText value="#{jefeAdministrativoController.selected.segundoNombre}" title="#{bundle.ViewJefeAdministrativoTitle_segundoNombre}"/>
+                        <h:outputText value="#{bundle.ViewJefeAdministrativoLabel_primerApellido}"/>
+                        <h:outputText value="#{jefeAdministrativoController.selected.primerApellido}" title="#{bundle.ViewJefeAdministrativoTitle_primerApellido}"/>
+                        <h:outputText value="#{bundle.ViewJefeAdministrativoLabel_segundoApellido}"/>
+                        <h:outputText value="#{jefeAdministrativoController.selected.segundoApellido}" title="#{bundle.ViewJefeAdministrativoTitle_segundoApellido}"/>
+                        <h:outputText value="#{bundle.ViewJefeAdministrativoLabel_email}"/>
+                        <h:outputText value="#{jefeAdministrativoController.selected.email}" title="#{bundle.ViewJefeAdministrativoTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewJefeAdministrativoLabel_telefono}"/>
+                        <h:outputText value="#{jefeAdministrativoController.selected.telefono}" title="#{bundle.ViewJefeAdministrativoTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewJefeAdministrativoLabel_tipoDocumentoIdTipoDoc}"/>
+                        <h:outputText value="#{jefeAdministrativoController.selected.tipoDocumentoIdTipoDoc}" title="#{bundle.ViewJefeAdministrativoTitle_tipoDocumentoIdTipoDoc}"/>
+                        <h:outputText value="#{bundle.ViewJefeAdministrativoLabel_usuariosIdUsuario}"/>
+                        <h:outputText value="#{jefeAdministrativoController.selected.usuariosIdUsuario}" title="#{bundle.ViewJefeAdministrativoTitle_usuariosIdUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" value="#{bundle.Close}" onclick="JefeAdministrativoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

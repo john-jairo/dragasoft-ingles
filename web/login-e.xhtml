@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <link rel="shortcuc icon" href="http://localhost:8080/dragasoft/faces/resources/imagenes/isologotransparente (1).png"></link>
+    <h:head>
+        <title>Login | Dragasoft</title>
+        <h:outputStylesheet name="css/iniciosesion.css"/>
+    </h:head>
+    <h:body>
+        <div class="lg">
+            
+            <a href="http://localhost:8080/dragasoft/faces/landing%20-%20e.xhtml"><img Src="http://localhost:8080/dragasoft/faces/resources/imagenes/logo SI.png"></img></a>
+        </div>
+    <div class="contenedor-form">
+        <div class="">
+            <span></span>
+        </div>
+        
+        <div class="formulario">
+            <h2 style="text-align: center">Login</h2>
+        <h:form>
+            <p:growl id="growl" life="6000"/>
+            <h:panelGrid columns="2" id="hpgLogin">
+                
+                <p:outputLabel/>
+                <p:inputText autocomplete="off" id="Email" required="true" value="#{loginBean.nombreUsuario}" placeholder="Email"/>
+                
+                <p:outputLabel/>
+                <p:inputText autocomplete="reset" id="Password" required="true" type="password" value="#{loginBean.password}" placeholder="Password"/>
+                
+                <p:column/>
+                <p:commandButton style="width: 390px; background: #0075d9; color: #FFF; font-size: medium; font-weight: initial"  value="Log In" update="hpgLogin, growl" action="#{loginBean.autenticar()}"/>
+            </h:panelGrid>
+        </h:form>
+            </div>
+        
+        <div class="formulario">
+            <h2>Crear Cuenta</h2>
+            <form action="exitoso-crear.xhtml">
+                <input type="text" placeholder="Numero De Documento" required=""></input>
+
+                <input type="text" placeholder="Tipo De Documento" required=""></input>
+
+                <input type="text" placeholder="Nombre" required=""></input> 
+                
+                <input type="text" placeholder="Apellido" required=""></input> 
+                
+                <input type="email" placeholder="Correo Electronico" required=""></input>
+               
+                <input type="password" placeholder="Contraseña" required=""></input>
+
+                <input type="text" placeholder="Telefono" required=""></input>
+                
+                
+                
+                <input href="exitoso-crear.html" type="submit" value="Registrarse"></input>
+            </form>
+        </div>
+        <div class="reset-password">
+            <a href="registroCuenta - e.xhtml">Forgot my password?</a>
+        </div>
+        <br></br>
+
+        <div class="registrarse">
+            <p style="text-align: center">You don't have an account yet?<a href="registrarse - e.xhtml"> <b>Sign up</b></a></p>
+    </div>
+        </div>
+
+    <script src="js/jquery-3.1.1.min.js"></script>    
+    <script src="js/main.js"></script>
+    </h:body>
+</html>
+

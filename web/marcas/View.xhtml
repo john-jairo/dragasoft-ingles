@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MarcasViewDlg" widgetVar="MarcasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMarcasTitle}">
+            <h:form style="text-align: center" id="MarcasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{marcasController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMarcasLabel_idMarca}"/>
+                        <h:outputText value="#{marcasController.selected.idMarca}" title="#{bundle.ViewMarcasTitle_idMarca}"/>
+                        <h:outputText value="#{bundle.ViewMarcasLabel_marca}"/>
+                        <h:outputText value="#{marcasController.selected.marca}" title="#{bundle.ViewMarcasTitle_marca}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" value="#{bundle.Close}" onclick="MarcasViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

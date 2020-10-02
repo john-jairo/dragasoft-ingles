@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstadoInventarioEditDlg" widgetVar="EstadoInventarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEstadoInventarioTitle}">
+            <h:form style="text-align: center" id="EstadoInventarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estadoInventarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEstadoInventarioLabel_idEstadoInventario}" for="idEstadoInventario" />
+                        <p:inputText id="idEstadoInventario" value="#{estadoInventarioController.selected.idEstadoInventario}" title="#{bundle.EditEstadoInventarioTitle_idEstadoInventario}" required="true" requiredMessage="#{bundle.EditEstadoInventarioRequiredMessage_idEstadoInventario}"/>
+                        <p:outputLabel value="#{bundle.EditEstadoInventarioLabel_estadoInventario}" for="estadoInventario" />
+                        <p:inputText id="estadoInventario" value="#{estadoInventarioController.selected.estadoInventario}" title="#{bundle.EditEstadoInventarioTitle_estadoInventario}" />
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{estadoInventarioController.update}" value="#{bundle.Save}" update="display,:EstadoInventarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EstadoInventarioEditDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="EstadoInventarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

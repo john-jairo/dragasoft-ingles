@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MenuECreateDlg" widgetVar="MenuECreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMenuETitle}">
+            <h:form id="MenuECreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{menuEController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMenuELabel_code}" for="code" />
+                        <p:inputText id="code" value="#{menuEController.selected.code}" title="#{bundle.CreateMenuETitle_code}" required="true" requiredMessage="#{bundle.CreateMenuERequiredMessage_code}"/>
+                        <p:outputLabel value="#{bundle.CreateMenuELabel_name}" for="name" />
+                        <p:inputText id="name" value="#{menuEController.selected.name}" title="#{bundle.CreateMenuETitle_name}" required="true" requiredMessage="#{bundle.CreateMenuERequiredMessage_name}"/>
+                        <p:outputLabel value="#{bundle.CreateMenuELabel_url}" for="url" />
+                        <p:inputText id="url" value="#{menuEController.selected.url}" title="#{bundle.CreateMenuETitle_url}" />
+                        <p:outputLabel value="#{bundle.CreateMenuELabel_type}" for="type" />
+                        <p:inputText id="type" value="#{menuEController.selected.type}" title="#{bundle.CreateMenuETitle_type}" required="true" requiredMessage="#{bundle.CreateMenuERequiredMessage_type}"/>
+                        <p:outputLabel value="#{bundle.CreateMenuELabel_usertype}" for="usertype" />
+                        <p:inputText id="usertype" value="#{menuEController.selected.usertype}" title="#{bundle.CreateMenuETitle_usertype}" required="true" requiredMessage="#{bundle.CreateMenuERequiredMessage_usertype}"/>
+                        <p:outputLabel value="#{bundle.CreateMenuELabel_codeSubmenu}" for="codeSubmenu" />
+                        <p:inputText id="codeSubmenu" value="#{menuEController.selected.codeSubmenu}" title="#{bundle.CreateMenuETitle_codeSubmenu}" />
+                        <p:outputLabel value="#{bundle.CreateMenuELabel_state}" for="state" />
+                        <p:selectBooleanCheckbox id="state" value="#{menuEController.selected.state}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{menuEController.create}" value="#{bundle.Save}" update="display,:MenuEListForm:datalist,:growl" oncomplete="handleSubmit(args,'MenuECreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MenuECreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

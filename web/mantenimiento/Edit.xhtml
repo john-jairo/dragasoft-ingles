@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MantenimientoEditDlg" widgetVar="MantenimientoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMantenimientoTitle}">
+            <h:form style="text-align: center" id="MantenimientoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mantenimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMantenimientoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{mantenimientoController.selected.codigo}" title="#{bundle.EditMantenimientoTitle_codigo}" required="true" requiredMessage="#{bundle.EditMantenimientoRequiredMessage_codigo}"/>
+                        <p:outputLabel value="#{bundle.EditMantenimientoLabel_obsMantenimiento}" for="obsMantenimiento" />
+                        <p:inputText id="obsMantenimiento" value="#{mantenimientoController.selected.obsMantenimiento}" title="#{bundle.EditMantenimientoTitle_obsMantenimiento}" required="true" requiredMessage="#{bundle.EditMantenimientoRequiredMessage_obsMantenimiento}"/>
+                        <p:outputLabel value="#{bundle.EditMantenimientoLabel_estadoMantenimientoIdEstadoMantenimiento}" for="estadoMantenimientoIdEstadoMantenimiento" />
+                        <p:inputText id="estadoMantenimientoIdEstadoMantenimiento" value="#{mantenimientoController.selected.estadoMantenimientoIdEstadoMantenimiento}" title="#{bundle.EditMantenimientoTitle_estadoMantenimientoIdEstadoMantenimiento}" required="true" requiredMessage="#{bundle.EditMantenimientoRequiredMessage_estadoMantenimientoIdEstadoMantenimiento}"/>
+                        <p:outputLabel value="#{bundle.EditMantenimientoLabel_tipoMantenimientoIdTipoMantenimiento}" for="tipoMantenimientoIdTipoMantenimiento" />
+                        <p:inputText id="tipoMantenimientoIdTipoMantenimiento" value="#{mantenimientoController.selected.tipoMantenimientoIdTipoMantenimiento}" title="#{bundle.EditMantenimientoTitle_tipoMantenimientoIdTipoMantenimiento}" required="true" requiredMessage="#{bundle.EditMantenimientoRequiredMessage_tipoMantenimientoIdTipoMantenimiento}"/>
+                        <p:outputLabel value="#{bundle.EditMantenimientoLabel_usuariosIdUsuario}" for="usuariosIdUsuario" />
+                        <p:inputText id="usuariosIdUsuario" value="#{mantenimientoController.selected.usuariosIdUsuario}" title="#{bundle.EditMantenimientoTitle_usuariosIdUsuario}" required="true" requiredMessage="#{bundle.EditMantenimientoRequiredMessage_usuariosIdUsuario}"/>
+                        <p:outputLabel value="#{bundle.EditMantenimientoLabel_inventarioCodigo}" for="inventarioCodigo" />
+                        <p:inputText id="inventarioCodigo" value="#{mantenimientoController.selected.inventarioCodigo}" title="#{bundle.EditMantenimientoTitle_inventarioCodigo}" required="true" requiredMessage="#{bundle.EditMantenimientoRequiredMessage_inventarioCodigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{mantenimientoController.update}" value="#{bundle.Save}" update="display,:MantenimientoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MantenimientoEditDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="MantenimientoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

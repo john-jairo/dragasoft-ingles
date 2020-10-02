@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperarioViewDlg" widgetVar="OperarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOperarioTitle}">
+            <h:form style="text-align: center" id="OperarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operarioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOperarioLabel_numeroDocumentoOp}"/>
+                        <h:outputText value="#{operarioController.selected.numeroDocumentoOp}" title="#{bundle.ViewOperarioTitle_numeroDocumentoOp}"/>
+                        <h:outputText value="#{bundle.ViewOperarioLabel_primerNombre}"/>
+                        <h:outputText value="#{operarioController.selected.primerNombre}" title="#{bundle.ViewOperarioTitle_primerNombre}"/>
+                        <h:outputText value="#{bundle.ViewOperarioLabel_segundoNombre}"/>
+                        <h:outputText value="#{operarioController.selected.segundoNombre}" title="#{bundle.ViewOperarioTitle_segundoNombre}"/>
+                        <h:outputText value="#{bundle.ViewOperarioLabel_primerApellido}"/>
+                        <h:outputText value="#{operarioController.selected.primerApellido}" title="#{bundle.ViewOperarioTitle_primerApellido}"/>
+                        <h:outputText value="#{bundle.ViewOperarioLabel_segundoApellido}"/>
+                        <h:outputText value="#{operarioController.selected.segundoApellido}" title="#{bundle.ViewOperarioTitle_segundoApellido}"/>
+                        <h:outputText value="#{bundle.ViewOperarioLabel_email}"/>
+                        <h:outputText value="#{operarioController.selected.email}" title="#{bundle.ViewOperarioTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewOperarioLabel_telefono}"/>
+                        <h:outputText value="#{operarioController.selected.telefono}" title="#{bundle.ViewOperarioTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewOperarioLabel_tipoDocumentoIdTipoDoc}"/>
+                        <h:outputText value="#{operarioController.selected.tipoDocumentoIdTipoDoc}" title="#{bundle.ViewOperarioTitle_tipoDocumentoIdTipoDoc}"/>
+                        <h:outputText value="#{bundle.ViewOperarioLabel_usuariosIdUsuario}"/>
+                        <h:outputText value="#{operarioController.selected.usuariosIdUsuario}" title="#{bundle.ViewOperarioTitle_usuariosIdUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" value="#{bundle.Close}" onclick="OperarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

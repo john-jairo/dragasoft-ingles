@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ContratosViewDlg" widgetVar="ContratosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewContratosTitle}">
+            <h:form style="text-align: center" id="ContratosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{contratosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewContratosLabel_codigoContrato}"/>
+                        <h:outputText value="#{contratosController.selected.codigoContrato}" title="#{bundle.ViewContratosTitle_codigoContrato}"/>
+                        <h:outputText value="#{bundle.ViewContratosLabel_sedeEntrega}"/>
+                        <h:outputText value="#{contratosController.selected.sedeEntrega}" title="#{bundle.ViewContratosTitle_sedeEntrega}"/>
+                        <h:outputText value="#{bundle.ViewContratosLabel_duracion}"/>
+                        <h:outputText value="#{contratosController.selected.duracion}" title="#{bundle.ViewContratosTitle_duracion}"/>
+                        <h:outputText value="#{bundle.ViewContratosLabel_estadoContratoIdEstadoContrato}"/>
+                        <h:outputText value="#{contratosController.selected.estadoContratoIdEstadoContrato}" title="#{bundle.ViewContratosTitle_estadoContratoIdEstadoContrato}"/>
+                        <h:outputText value="#{bundle.ViewContratosLabel_ciudadesCodigoMunicipio}"/>
+                        <h:outputText value="#{contratosController.selected.ciudadesCodigoMunicipio}" title="#{bundle.ViewContratosTitle_ciudadesCodigoMunicipio}"/>
+                        <h:outputText value="#{bundle.ViewContratosLabel_tipoContratoIdTipoContrato}"/>
+                        <h:outputText value="#{contratosController.selected.tipoContratoIdTipoContrato}" title="#{bundle.ViewContratosTitle_tipoContratoIdTipoContrato}"/>
+                        <h:outputText value="#{bundle.ViewContratosLabel_jefeAdministrativoUsuariosIdUsuario}"/>
+                        <h:outputText value="#{contratosController.selected.jefeAdministrativoUsuariosIdUsuario}" title="#{bundle.ViewContratosTitle_jefeAdministrativoUsuariosIdUsuario}"/>
+                        <h:outputText value="#{bundle.ViewContratosLabel_inventarioCodigo}"/>
+                        <h:outputText value="#{contratosController.selected.inventarioCodigo}" title="#{bundle.ViewContratosTitle_inventarioCodigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" value="#{bundle.Close}" onclick="ContratosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

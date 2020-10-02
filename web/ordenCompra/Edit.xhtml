@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OrdenCompraEditDlg" widgetVar="OrdenCompraEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOrdenCompraTitle}">
+            <h:form style="text-align: center" id="OrdenCompraEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ordenCompraController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOrdenCompraLabel_idordenCompra}" for="idordenCompra" />
+                        <p:inputText id="idordenCompra" value="#{ordenCompraController.selected.idordenCompra}" title="#{bundle.EditOrdenCompraTitle_idordenCompra}" required="true" requiredMessage="#{bundle.EditOrdenCompraRequiredMessage_idordenCompra}"/>
+                        <p:outputLabel value="#{bundle.EditOrdenCompraLabel_inventarioCodigo}" for="inventarioCodigo" />
+                        <p:inputText id="inventarioCodigo" value="#{ordenCompraController.selected.inventarioCodigo}" title="#{bundle.EditOrdenCompraTitle_inventarioCodigo}" required="true" requiredMessage="#{bundle.EditOrdenCompraRequiredMessage_inventarioCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditOrdenCompraLabel_usuariosIdUsuario}" for="usuariosIdUsuario" />
+                        <p:inputText id="usuariosIdUsuario" value="#{ordenCompraController.selected.usuariosIdUsuario}" title="#{bundle.EditOrdenCompraTitle_usuariosIdUsuario}" required="true" requiredMessage="#{bundle.EditOrdenCompraRequiredMessage_usuariosIdUsuario}"/>
+                        <p:outputLabel value="#{bundle.EditOrdenCompraLabel_estadoOrdenIdestadoOrden}" for="estadoOrdenIdestadoOrden" />
+                        <p:inputText id="estadoOrdenIdestadoOrden" value="#{ordenCompraController.selected.estadoOrdenIdestadoOrden}" title="#{bundle.EditOrdenCompraTitle_estadoOrdenIdestadoOrden}" required="true" requiredMessage="#{bundle.EditOrdenCompraRequiredMessage_estadoOrdenIdestadoOrden}"/>
+                        <p:outputLabel value="#{bundle.EditOrdenCompraLabel_observacionOc}" for="observacionOc" />
+                        <p:inputText id="observacionOc" value="#{ordenCompraController.selected.observacionOc}" title="#{bundle.EditOrdenCompraTitle_observacionOc}" />
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{ordenCompraController.update}" value="#{bundle.Save}" update="display,:OrdenCompraListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OrdenCompraEditDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="OrdenCompraEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

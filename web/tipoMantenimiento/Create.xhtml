@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoMantenimientoCreateDlg" widgetVar="TipoMantenimientoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTipoMantenimientoTitle}">
+            <h:form style="text-align: center" id="TipoMantenimientoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoMantenimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTipoMantenimientoLabel_idTipoMantenimiento}" for="idTipoMantenimiento" />
+                        <p:inputText id="idTipoMantenimiento" value="#{tipoMantenimientoController.selected.idTipoMantenimiento}" title="#{bundle.CreateTipoMantenimientoTitle_idTipoMantenimiento}" required="true" requiredMessage="#{bundle.CreateTipoMantenimientoRequiredMessage_idTipoMantenimiento}"/>
+                        <p:outputLabel value="#{bundle.CreateTipoMantenimientoLabel_tipoMantenimiento}" for="tipoMantenimiento" />
+                        <p:inputText id="tipoMantenimiento" value="#{tipoMantenimientoController.selected.tipoMantenimiento}" title="#{bundle.CreateTipoMantenimientoTitle_tipoMantenimiento}" required="true" requiredMessage="#{bundle.CreateTipoMantenimientoRequiredMessage_tipoMantenimiento}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{tipoMantenimientoController.create}" value="#{bundle.Save}" update="display,:TipoMantenimientoListForm:datalist,:growl" oncomplete="handleSubmit(args,'TipoMantenimientoCreateDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="TipoMantenimientoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

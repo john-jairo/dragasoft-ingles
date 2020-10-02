@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="JefeAdministrativoCreateDlg" widgetVar="JefeAdministrativoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateJefeAdministrativoTitle}">
+            <h:form style="text-align: center" id="JefeAdministrativoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{jefeAdministrativoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateJefeAdministrativoLabel_numeroDocumento}" for="numeroDocumento" />
+                        <p:inputText id="numeroDocumento" value="#{jefeAdministrativoController.selected.numeroDocumento}" title="#{bundle.CreateJefeAdministrativoTitle_numeroDocumento}" required="true" requiredMessage="#{bundle.CreateJefeAdministrativoRequiredMessage_numeroDocumento}"/>
+                        <p:outputLabel value="#{bundle.CreateJefeAdministrativoLabel_primerNombre}" for="primerNombre" />
+                        <p:inputText id="primerNombre" value="#{jefeAdministrativoController.selected.primerNombre}" title="#{bundle.CreateJefeAdministrativoTitle_primerNombre}" required="true" requiredMessage="#{bundle.CreateJefeAdministrativoRequiredMessage_primerNombre}"/>
+                        <p:outputLabel value="#{bundle.CreateJefeAdministrativoLabel_segundoNombre}" for="segundoNombre" />
+                        <p:inputText id="segundoNombre" value="#{jefeAdministrativoController.selected.segundoNombre}" title="#{bundle.CreateJefeAdministrativoTitle_segundoNombre}" />
+                        <p:outputLabel value="#{bundle.CreateJefeAdministrativoLabel_primerApellido}" for="primerApellido" />
+                        <p:inputText id="primerApellido" value="#{jefeAdministrativoController.selected.primerApellido}" title="#{bundle.CreateJefeAdministrativoTitle_primerApellido}" required="true" requiredMessage="#{bundle.CreateJefeAdministrativoRequiredMessage_primerApellido}"/>
+                        <p:outputLabel value="#{bundle.CreateJefeAdministrativoLabel_segundoApellido}" for="segundoApellido" />
+                        <p:inputText id="segundoApellido" value="#{jefeAdministrativoController.selected.segundoApellido}" title="#{bundle.CreateJefeAdministrativoTitle_segundoApellido}" />
+                        <p:outputLabel value="#{bundle.CreateJefeAdministrativoLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{jefeAdministrativoController.selected.email}" title="#{bundle.CreateJefeAdministrativoTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateJefeAdministrativoLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{jefeAdministrativoController.selected.telefono}" title="#{bundle.CreateJefeAdministrativoTitle_telefono}" required="true" requiredMessage="#{bundle.CreateJefeAdministrativoRequiredMessage_telefono}"/>
+                        <p:outputLabel value="#{bundle.CreateJefeAdministrativoLabel_tipoDocumentoIdTipoDoc}" for="tipoDocumentoIdTipoDoc" />
+                        <p:inputText id="tipoDocumentoIdTipoDoc" value="#{jefeAdministrativoController.selected.tipoDocumentoIdTipoDoc}" title="#{bundle.CreateJefeAdministrativoTitle_tipoDocumentoIdTipoDoc}" required="true" requiredMessage="#{bundle.CreateJefeAdministrativoRequiredMessage_tipoDocumentoIdTipoDoc}"/>
+                        <p:outputLabel value="#{bundle.CreateJefeAdministrativoLabel_usuariosIdUsuario}" for="usuariosIdUsuario" />
+                        <p:inputText id="usuariosIdUsuario" value="#{jefeAdministrativoController.selected.usuariosIdUsuario}" title="#{bundle.CreateJefeAdministrativoTitle_usuariosIdUsuario}" required="true" requiredMessage="#{bundle.CreateJefeAdministrativoRequiredMessage_usuariosIdUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{jefeAdministrativoController.create}" value="#{bundle.Save}" update="display,:JefeAdministrativoListForm:datalist,:growl" oncomplete="handleSubmit(args,'JefeAdministrativoCreateDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="JefeAdministrativoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

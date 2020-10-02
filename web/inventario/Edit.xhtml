@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InventarioEditDlg" widgetVar="InventarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditInventarioTitle}">
+            <h:form style="text-align: center" id="InventarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{inventarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{inventarioController.selected.codigo}" title="#{bundle.EditInventarioTitle_codigo}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_codigo}"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_categoria}" for="categoria" />
+                        <p:inputText id="categoria" value="#{inventarioController.selected.categoria}" title="#{bundle.EditInventarioTitle_categoria}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_categoria}"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{inventarioController.selected.referencia}" title="#{bundle.EditInventarioTitle_referencia}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_referencia}"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_anoFabricacion}" for="anoFabricacion" />
+                        <p:inputText id="anoFabricacion" value="#{inventarioController.selected.anoFabricacion}" title="#{bundle.EditInventarioTitle_anoFabricacion}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_anoFabricacion}"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_cicloVida}" for="cicloVida" />
+                        <p:inputText id="cicloVida" value="#{inventarioController.selected.cicloVida}" title="#{bundle.EditInventarioTitle_cicloVida}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_cicloVida}"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{inventarioController.selected.cantidad}" title="#{bundle.EditInventarioTitle_cantidad}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_estadoInventario}" for="estadoInventario" />
+                        <p:inputText id="estadoInventario" value="#{inventarioController.selected.estadoInventario}" title="#{bundle.EditInventarioTitle_estadoInventario}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_estadoInventario}"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_idUsuario}" for="idUsuario" />
+                        <p:inputText id="idUsuario" value="#{inventarioController.selected.idUsuario}" title="#{bundle.EditInventarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_idUsuario}"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_altura}" for="altura" />
+                        <p:inputText id="altura" value="#{inventarioController.selected.altura}" title="#{bundle.EditInventarioTitle_altura}" />
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_ancho}" for="ancho" />
+                        <p:inputText id="ancho" value="#{inventarioController.selected.ancho}" title="#{bundle.EditInventarioTitle_ancho}" />
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_profundidad}" for="profundidad" />
+                        <p:inputText id="profundidad" value="#{inventarioController.selected.profundidad}" title="#{bundle.EditInventarioTitle_profundidad}" />
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_peso}" for="peso" />
+                        <p:inputText id="peso" value="#{inventarioController.selected.peso}" title="#{bundle.EditInventarioTitle_peso}" />
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_color}" for="color" />
+                        <p:inputText id="color" value="#{inventarioController.selected.color}" title="#{bundle.EditInventarioTitle_color}" />
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_marcasIdMarca}" for="marcasIdMarca" />
+                        <p:inputText id="marcasIdMarca" value="#{inventarioController.selected.marcasIdMarca}" title="#{bundle.EditInventarioTitle_marcasIdMarca}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_marcasIdMarca}"/>
+                        <p:outputLabel value="#{bundle.EditInventarioLabel_subCategoria}" for="subCategoria" />
+                        <p:inputText id="subCategoria" value="#{inventarioController.selected.subCategoria}" title="#{bundle.EditInventarioTitle_subCategoria}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_subCategoria}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{inventarioController.update}" value="#{bundle.Save}" update="display,:InventarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'InventarioEditDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="InventarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

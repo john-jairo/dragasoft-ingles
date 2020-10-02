@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AlertaMantEditDlg" widgetVar="AlertaMantEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAlertaMantTitle}">
+            <h:form style="text-align: center" id="AlertaMantEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{alertaMantController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAlertaMantLabel_idalertaMant}" for="idalertaMant" />
+                        <p:inputText id="idalertaMant" value="#{alertaMantController.selected.idalertaMant}" title="#{bundle.EditAlertaMantTitle_idalertaMant}" required="true" requiredMessage="#{bundle.EditAlertaMantRequiredMessage_idalertaMant}"/>
+                        <p:outputLabel value="#{bundle.EditAlertaMantLabel_mantenimientoCodigo}" for="mantenimientoCodigo" />
+                        <p:selectOneMenu id="mantenimientoCodigo" value="#{alertaMantController.selected.mantenimientoCodigo}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{mantenimientoController.itemsAvailableSelectOne}"
+                                           var="mantenimientoCodigoItem"
+                                           itemValue="#{mantenimientoCodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{alertaMantController.update}" value="#{bundle.Save}" update="display,:AlertaMantListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AlertaMantEditDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="AlertaMantEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

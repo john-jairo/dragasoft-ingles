@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpresaCreateDlg" widgetVar="EmpresaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEmpresaTitle}">
+            <h:form style="text-align: center" id="EmpresaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empresaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_nit}" for="nit" />
+                        <p:inputText id="nit" value="#{empresaController.selected.nit}" title="#{bundle.CreateEmpresaTitle_nit}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_nit}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_dv}" for="dv" />
+                        <p:inputText id="dv" value="#{empresaController.selected.dv}" title="#{bundle.CreateEmpresaTitle_dv}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_dv}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_razonSocial}" for="razonSocial" />
+                        <p:inputText id="razonSocial" value="#{empresaController.selected.razonSocial}" title="#{bundle.CreateEmpresaTitle_razonSocial}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_razonSocial}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{empresaController.create}" value="#{bundle.Save}" update="display,:EmpresaListForm:datalist,:growl" oncomplete="handleSubmit(args,'EmpresaCreateDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="EmpresaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

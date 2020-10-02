@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClientesViewDlg" widgetVar="ClientesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewClientesTitle}">
+            <h:form style="text-align: center" id="ClientesViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clientesController.selected != null}">
+                        <h:outputText value="#{bundle.ViewClientesLabel_numeroDocumento}"/>
+                        <h:outputText value="#{clientesController.selected.numeroDocumento}" title="#{bundle.ViewClientesTitle_numeroDocumento}"/>
+                        <h:outputText value="#{bundle.ViewClientesLabel_tipoDocumentoIdTipoDoc}"/>
+                        <h:outputText value="#{clientesController.selected.tipoDocumentoIdTipoDoc}" title="#{bundle.ViewClientesTitle_tipoDocumentoIdTipoDoc}"/>
+                        <h:outputText value="#{bundle.ViewClientesLabel_primerNombre}"/>
+                        <h:outputText value="#{clientesController.selected.primerNombre}" title="#{bundle.ViewClientesTitle_primerNombre}"/>
+                        <h:outputText value="#{bundle.ViewClientesLabel_segundoNombre}"/>
+                        <h:outputText value="#{clientesController.selected.segundoNombre}" title="#{bundle.ViewClientesTitle_segundoNombre}"/>
+                        <h:outputText value="#{bundle.ViewClientesLabel_primerApellido}"/>
+                        <h:outputText value="#{clientesController.selected.primerApellido}" title="#{bundle.ViewClientesTitle_primerApellido}"/>
+                        <h:outputText value="#{bundle.ViewClientesLabel_segundoApellido}"/>
+                        <h:outputText value="#{clientesController.selected.segundoApellido}" title="#{bundle.ViewClientesTitle_segundoApellido}"/>
+                        <h:outputText value="#{bundle.ViewClientesLabel_email}"/>
+                        <h:outputText value="#{clientesController.selected.email}" title="#{bundle.ViewClientesTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewClientesLabel_telefono}"/>
+                        <h:outputText value="#{clientesController.selected.telefono}" title="#{bundle.ViewClientesTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewClientesLabel_contratosCodigoContrato}"/>
+                        <h:outputText value="#{clientesController.selected.contratosCodigoContrato}" title="#{bundle.ViewClientesTitle_contratosCodigoContrato}"/>
+                        <h:outputText value="#{bundle.ViewClientesLabel_usuariosIdUsuario}"/>
+                        <h:outputText value="#{clientesController.selected.usuariosIdUsuario}" title="#{bundle.ViewClientesTitle_usuariosIdUsuario}"/>
+                        <h:outputText value="#{bundle.ViewClientesLabel_empresaNit}"/>
+                        <h:outputText value="#{clientesController.selected.empresaNit}" title="#{bundle.ViewClientesTitle_empresaNit}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" value="#{bundle.Close}" onclick="ClientesViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

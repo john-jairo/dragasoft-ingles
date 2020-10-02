@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListContratosTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ContratosListForm">
+                <p:panel header="#{bundle.ListContratosTitle}">
+                    <p:dataTable id="datalist" value="#{contratosController.items}" var="item"
+                                 selectionMode="single" selection="#{contratosController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.codigoContrato}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50" widgetVar="contratosBuscar"
+                                 >
+                        
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="search"/>
+                                <p:inputText id="globalFilter" onkeyup="PF('contratosBuscar').filter()"
+                                             style="width: 150px;"/>
+                            </p:outputPanel>
+                        </f:facet>
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.codigoContrato}" filterStyle="width:100px;" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContratosTitle_codigoContrato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoContrato}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.sedeEntrega}" filterStyle="width:100px;" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContratosTitle_sedeEntrega}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sedeEntrega}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.duracion}" filterStyle="width:100px;" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContratosTitle_duracion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.duracion}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.estadoContratoIdEstadoContrato}" filterStyle="width:100px;" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContratosTitle_estadoContratoIdEstadoContrato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estadoContratoIdEstadoContrato}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.ciudadesCodigoMunicipio}" filterStyle="width:100px;" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContratosTitle_ciudadesCodigoMunicipio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ciudadesCodigoMunicipio}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.tipoContratoIdTipoContrato}" filterStyle="width:100px;" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContratosTitle_tipoContratoIdTipoContrato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoContratoIdTipoContrato}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.jefeAdministrativoUsuariosIdUsuario}" filterStyle="width:100px;" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContratosTitle_jefeAdministrativoUsuariosIdUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.jefeAdministrativoUsuariosIdUsuario}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.inventarioCodigo}" filterStyle="width:100px;" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContratosTitle_inventarioCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.inventarioCodigo}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{contratosController.prepareCreate}" update=":ContratosCreateForm" oncomplete="PF('ContratosCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ContratosViewForm" oncomplete="PF('ContratosViewDialog').show()" disabled="#{empty contratosController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ContratosEditForm" oncomplete="PF('ContratosEditDialog').show()" disabled="#{empty contratosController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{contratosController.destroy}" update=":growl,datalist" disabled="#{empty contratosController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

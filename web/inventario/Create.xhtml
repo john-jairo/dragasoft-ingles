@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InventarioCreateDlg" widgetVar="InventarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInventarioTitle}">
+            <h:form style="text-align: center" id="InventarioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{inventarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{inventarioController.selected.codigo}" title="#{bundle.CreateInventarioTitle_codigo}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_codigo}"/>
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_categoria}" for="categoria" />
+                        <p:inputText id="categoria" value="#{inventarioController.selected.categoria}" title="#{bundle.CreateInventarioTitle_categoria}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_categoria}"/>
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{inventarioController.selected.referencia}" title="#{bundle.CreateInventarioTitle_referencia}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_referencia}"/>
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_anoFabricacion}" for="anoFabricacion" />
+                        <p:inputText id="anoFabricacion" value="#{inventarioController.selected.anoFabricacion}" title="#{bundle.CreateInventarioTitle_anoFabricacion}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_anoFabricacion}"/>
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_cicloVida}" for="cicloVida" />
+                        <p:inputText id="cicloVida" value="#{inventarioController.selected.cicloVida}" title="#{bundle.CreateInventarioTitle_cicloVida}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_cicloVida}"/>
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{inventarioController.selected.cantidad}" title="#{bundle.CreateInventarioTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_estadoInventario}" for="estadoInventario" />
+                        <p:inputText id="estadoInventario" value="#{inventarioController.selected.estadoInventario}" title="#{bundle.CreateInventarioTitle_estadoInventario}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_estadoInventario}"/>
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_idUsuario}" for="idUsuario" />
+                        <p:inputText id="idUsuario" value="#{inventarioController.selected.idUsuario}" title="#{bundle.CreateInventarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_idUsuario}"/>
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_altura}" for="altura" />
+                        <p:inputText id="altura" value="#{inventarioController.selected.altura}" title="#{bundle.CreateInventarioTitle_altura}" />
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_ancho}" for="ancho" />
+                        <p:inputText id="ancho" value="#{inventarioController.selected.ancho}" title="#{bundle.CreateInventarioTitle_ancho}" />
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_profundidad}" for="profundidad" />
+                        <p:inputText id="profundidad" value="#{inventarioController.selected.profundidad}" title="#{bundle.CreateInventarioTitle_profundidad}" />
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_peso}" for="peso" />
+                        <p:inputText id="peso" value="#{inventarioController.selected.peso}" title="#{bundle.CreateInventarioTitle_peso}" />
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_color}" for="color" />
+                        <p:inputText id="color" value="#{inventarioController.selected.color}" title="#{bundle.CreateInventarioTitle_color}" />
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_marcasIdMarca}" for="marcasIdMarca" />
+                        <p:inputText id="marcasIdMarca" value="#{inventarioController.selected.marcasIdMarca}" title="#{bundle.CreateInventarioTitle_marcasIdMarca}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_marcasIdMarca}"/>
+                        <p:outputLabel value="#{bundle.CreateInventarioLabel_subCategoria}" for="subCategoria" />
+                        <p:inputText id="subCategoria" value="#{inventarioController.selected.subCategoria}" title="#{bundle.CreateInventarioTitle_subCategoria}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_subCategoria}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{inventarioController.create}" value="#{bundle.Save}" update="display,:InventarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'InventarioCreateDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="InventarioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

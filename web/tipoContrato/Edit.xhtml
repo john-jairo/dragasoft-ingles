@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoContratoEditDlg" widgetVar="TipoContratoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTipoContratoTitle}">
+            <h:form style="text-align: center" id="TipoContratoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoContratoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTipoContratoLabel_idTipoContrato}" for="idTipoContrato" />
+                        <p:inputText id="idTipoContrato" value="#{tipoContratoController.selected.idTipoContrato}" title="#{bundle.EditTipoContratoTitle_idTipoContrato}" required="true" requiredMessage="#{bundle.EditTipoContratoRequiredMessage_idTipoContrato}"/>
+                        <p:outputLabel value="#{bundle.EditTipoContratoLabel_tipoContrato}" for="tipoContrato" />
+                        <p:inputText id="tipoContrato" value="#{tipoContratoController.selected.tipoContrato}" title="#{bundle.EditTipoContratoTitle_tipoContrato}" required="true" requiredMessage="#{bundle.EditTipoContratoRequiredMessage_tipoContrato}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{tipoContratoController.update}" value="#{bundle.Save}" update="display,:TipoContratoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoContratoEditDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="TipoContratoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SubCategoriaEditDlg" widgetVar="SubCategoriaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSubCategoriaTitle}">
+            <h:form style="text-align: center" id="SubCategoriaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{subCategoriaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSubCategoriaLabel_idSubCategoria}" for="idSubCategoria" />
+                        <p:inputText id="idSubCategoria" value="#{subCategoriaController.selected.idSubCategoria}" title="#{bundle.EditSubCategoriaTitle_idSubCategoria}" required="true" requiredMessage="#{bundle.EditSubCategoriaRequiredMessage_idSubCategoria}"/>
+                        <p:outputLabel value="#{bundle.EditSubCategoriaLabel_subCategoria}" for="subCategoria" />
+                        <p:inputText id="subCategoria" value="#{subCategoriaController.selected.subCategoria}" title="#{bundle.EditSubCategoriaTitle_subCategoria}" />
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{subCategoriaController.update}" value="#{bundle.Save}" update="display,:SubCategoriaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SubCategoriaEditDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="SubCategoriaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

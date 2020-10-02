@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstadoEntregaViewDlg" widgetVar="EstadoEntregaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEstadoEntregaTitle}">
+            <h:form style="text-align: center" id="EstadoEntregaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estadoEntregaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEstadoEntregaLabel_idestadoEntrega}"/>
+                        <h:outputText value="#{estadoEntregaController.selected.idestadoEntrega}" title="#{bundle.ViewEstadoEntregaTitle_idestadoEntrega}"/>
+                        <h:outputText value="#{bundle.ViewEstadoEntregaLabel_estadoEntrega}"/>
+                        <h:outputText value="#{estadoEntregaController.selected.estadoEntrega}" title="#{bundle.ViewEstadoEntregaTitle_estadoEntrega}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" value="#{bundle.Close}" onclick="EstadoEntregaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

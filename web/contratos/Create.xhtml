@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ContratosCreateDlg" widgetVar="ContratosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateContratosTitle}">
+            <h:form style="text-align: center" id="ContratosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{contratosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateContratosLabel_codigoContrato}" for="codigoContrato" />
+                        <p:inputText id="codigoContrato" value="#{contratosController.selected.codigoContrato}" title="#{bundle.CreateContratosTitle_codigoContrato}" required="true" requiredMessage="#{bundle.CreateContratosRequiredMessage_codigoContrato}"/>
+                        <p:outputLabel value="#{bundle.CreateContratosLabel_sedeEntrega}" for="sedeEntrega" />
+                        <p:inputText id="sedeEntrega" value="#{contratosController.selected.sedeEntrega}" title="#{bundle.CreateContratosTitle_sedeEntrega}" />
+                        <p:outputLabel value="#{bundle.CreateContratosLabel_duracion}" for="duracion" />
+                        <p:inputText id="duracion" value="#{contratosController.selected.duracion}" title="#{bundle.CreateContratosTitle_duracion}" />
+                        <p:outputLabel value="#{bundle.CreateContratosLabel_estadoContratoIdEstadoContrato}" for="estadoContratoIdEstadoContrato" />
+                        <p:inputText id="estadoContratoIdEstadoContrato" value="#{contratosController.selected.estadoContratoIdEstadoContrato}" title="#{bundle.CreateContratosTitle_estadoContratoIdEstadoContrato}" required="true" requiredMessage="#{bundle.CreateContratosRequiredMessage_estadoContratoIdEstadoContrato}"/>
+                        <p:outputLabel value="#{bundle.CreateContratosLabel_ciudadesCodigoMunicipio}" for="ciudadesCodigoMunicipio" />
+                        <p:inputText id="ciudadesCodigoMunicipio" value="#{contratosController.selected.ciudadesCodigoMunicipio}" title="#{bundle.CreateContratosTitle_ciudadesCodigoMunicipio}" required="true" requiredMessage="#{bundle.CreateContratosRequiredMessage_ciudadesCodigoMunicipio}"/>
+                        <p:outputLabel value="#{bundle.CreateContratosLabel_tipoContratoIdTipoContrato}" for="tipoContratoIdTipoContrato" />
+                        <p:inputText id="tipoContratoIdTipoContrato" value="#{contratosController.selected.tipoContratoIdTipoContrato}" title="#{bundle.CreateContratosTitle_tipoContratoIdTipoContrato}" required="true" requiredMessage="#{bundle.CreateContratosRequiredMessage_tipoContratoIdTipoContrato}"/>
+                        <p:outputLabel value="#{bundle.CreateContratosLabel_jefeAdministrativoUsuariosIdUsuario}" for="jefeAdministrativoUsuariosIdUsuario" />
+                        <p:inputText id="jefeAdministrativoUsuariosIdUsuario" value="#{contratosController.selected.jefeAdministrativoUsuariosIdUsuario}" title="#{bundle.CreateContratosTitle_jefeAdministrativoUsuariosIdUsuario}" required="true" requiredMessage="#{bundle.CreateContratosRequiredMessage_jefeAdministrativoUsuariosIdUsuario}"/>
+                        <p:outputLabel value="#{bundle.CreateContratosLabel_inventarioCodigo}" for="inventarioCodigo" />
+                        <p:inputText id="inventarioCodigo" value="#{contratosController.selected.inventarioCodigo}" title="#{bundle.CreateContratosTitle_inventarioCodigo}" required="true" requiredMessage="#{bundle.CreateContratosRequiredMessage_inventarioCodigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{contratosController.create}" value="#{bundle.Save}" update="display,:ContratosListForm:datalist,:growl" oncomplete="handleSubmit(args,'ContratosCreateDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="ContratosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

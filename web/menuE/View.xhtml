@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MenuEViewDlg" widgetVar="MenuEViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMenuETitle}">
+            <h:form id="MenuEViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{menuEController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMenuELabel_code}"/>
+                        <h:outputText value="#{menuEController.selected.code}" title="#{bundle.ViewMenuETitle_code}"/>
+                        <h:outputText value="#{bundle.ViewMenuELabel_name}"/>
+                        <h:outputText value="#{menuEController.selected.name}" title="#{bundle.ViewMenuETitle_name}"/>
+                        <h:outputText value="#{bundle.ViewMenuELabel_url}"/>
+                        <h:outputText value="#{menuEController.selected.url}" title="#{bundle.ViewMenuETitle_url}"/>
+                        <h:outputText value="#{bundle.ViewMenuELabel_type}"/>
+                        <h:outputText value="#{menuEController.selected.type}" title="#{bundle.ViewMenuETitle_type}"/>
+                        <h:outputText value="#{bundle.ViewMenuELabel_usertype}"/>
+                        <h:outputText value="#{menuEController.selected.usertype}" title="#{bundle.ViewMenuETitle_usertype}"/>
+                        <h:outputText value="#{bundle.ViewMenuELabel_codeSubmenu}"/>
+                        <h:outputText value="#{menuEController.selected.codeSubmenu}" title="#{bundle.ViewMenuETitle_codeSubmenu}"/>
+                        <h:outputText value="#{bundle.ViewMenuELabel_state}"/>
+                        <p:selectBooleanCheckbox value="#{menuEController.selected.state}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MenuEViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

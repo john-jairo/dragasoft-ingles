@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EntregaEditDlg" widgetVar="EntregaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEntregaTitle}">
+            <h:form style="text-align: center" id="EntregaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{entregaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEntregaLabel_identrega}" for="identrega" />
+                        <p:inputText id="identrega" value="#{entregaController.selected.identrega}" title="#{bundle.EditEntregaTitle_identrega}" required="true" requiredMessage="#{bundle.EditEntregaRequiredMessage_identrega}"/>
+                        <p:outputLabel value="#{bundle.EditEntregaLabel_estadoEntregaIdestadoEntrega}" for="estadoEntregaIdestadoEntrega" />
+                        <p:inputText id="estadoEntregaIdestadoEntrega" value="#{entregaController.selected.estadoEntregaIdestadoEntrega}" title="#{bundle.EditEntregaTitle_estadoEntregaIdestadoEntrega}" required="true" requiredMessage="#{bundle.EditEntregaRequiredMessage_estadoEntregaIdestadoEntrega}"/>
+                        <p:outputLabel value="#{bundle.EditEntregaLabel_usuariosIdUsuario}" for="usuariosIdUsuario" />
+                        <p:inputText id="usuariosIdUsuario" value="#{entregaController.selected.usuariosIdUsuario}" title="#{bundle.EditEntregaTitle_usuariosIdUsuario}" required="true" requiredMessage="#{bundle.EditEntregaRequiredMessage_usuariosIdUsuario}"/>
+                        <p:outputLabel value="#{bundle.EditEntregaLabel_puntoInicio}" for="puntoInicio" />
+                        <p:inputText id="puntoInicio" value="#{entregaController.selected.puntoInicio}" title="#{bundle.EditEntregaTitle_puntoInicio}" />
+                        <p:outputLabel value="#{bundle.EditEntregaLabel_ubicacionActual}" for="ubicacionActual" />
+                        <p:inputText id="ubicacionActual" value="#{entregaController.selected.ubicacionActual}" title="#{bundle.EditEntregaTitle_ubicacionActual}" />
+                        <p:outputLabel value="#{bundle.EditEntregaLabel_contratosCodigoContrato}" for="contratosCodigoContrato" />
+                        <p:inputText id="contratosCodigoContrato" value="#{entregaController.selected.contratosCodigoContrato}" title="#{bundle.EditEntregaTitle_contratosCodigoContrato}" required="true" requiredMessage="#{bundle.EditEntregaRequiredMessage_contratosCodigoContrato}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{entregaController.update}" value="#{bundle.Save}" update="display,:EntregaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EntregaEditDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="EntregaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

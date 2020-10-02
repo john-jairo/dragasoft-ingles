@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstadoEntregaEditDlg" widgetVar="EstadoEntregaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEstadoEntregaTitle}">
+            <h:form style="text-align: center" id="EstadoEntregaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estadoEntregaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEstadoEntregaLabel_idestadoEntrega}" for="idestadoEntrega" />
+                        <p:inputText id="idestadoEntrega" value="#{estadoEntregaController.selected.idestadoEntrega}" title="#{bundle.EditEstadoEntregaTitle_idestadoEntrega}" required="true" requiredMessage="#{bundle.EditEstadoEntregaRequiredMessage_idestadoEntrega}"/>
+                        <p:outputLabel value="#{bundle.EditEstadoEntregaLabel_estadoEntrega}" for="estadoEntrega" />
+                        <p:inputText id="estadoEntrega" value="#{estadoEntregaController.selected.estadoEntrega}" title="#{bundle.EditEstadoEntregaTitle_estadoEntrega}" required="true" requiredMessage="#{bundle.EditEstadoEntregaRequiredMessage_estadoEntrega}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" actionListener="#{estadoEntregaController.update}" value="#{bundle.Save}" update="display,:EstadoEntregaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EstadoEntregaEditDialog');"/>
+                    <p:commandButton style="width: 70px" value="#{bundle.Cancel}" onclick="EstadoEntregaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

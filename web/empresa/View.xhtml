@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpresaViewDlg" widgetVar="EmpresaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEmpresaTitle}">
+            <h:form style="text-align: center" id="EmpresaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empresaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_nit}"/>
+                        <h:outputText value="#{empresaController.selected.nit}" title="#{bundle.ViewEmpresaTitle_nit}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_dv}"/>
+                        <h:outputText value="#{empresaController.selected.dv}" title="#{bundle.ViewEmpresaTitle_dv}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_razonSocial}"/>
+                        <h:outputText value="#{empresaController.selected.razonSocial}" title="#{bundle.ViewEmpresaTitle_razonSocial}"/>
+                    </p:panelGrid>
+                    <p:commandButton style="width: 70px" value="#{bundle.Close}" onclick="EmpresaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

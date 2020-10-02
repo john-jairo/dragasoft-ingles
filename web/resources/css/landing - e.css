@@ -1,0 +1,384 @@
+@import url('data:application/octet-stream;base64,QGZvbnQtZmFjZSB7CiAgZm9udC1mYW1pbHk6ICdJQk0gUGxleCBTYW5zJzsKICBmb250LXN0eWxlOiBub3JtYWw7CiAgZm9udC13ZWlnaHQ6IDQwMDsKICBmb250LWRpc3BsYXk6IHN3YXA7CiAgc3JjOiBsb2NhbCgnSUJNIFBsZXggU2FucycpLCBsb2NhbCgnSUJNUGxleFNhbnMnKSwgdXJsKGh0dHBzOi8vZm9udHMuZ3N0YXRpYy5jb20vcy9pYm1wbGV4c2Fucy92Ny96WVhnS1ZFbE1ZWWFKZThicExIbkN3REtoZEhlRUEudHRmKSBmb3JtYXQoJ3RydWV0eXBlJyk7Cn0K');
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+.borde{
+	border: 0.7px solid black;
+}
+/*navegador*/
+nav{
+	width: 100%;
+	height: 65px;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: 1.5vw;
+	background: #fff;
+	position: fixed;
+}
+
+.logo{
+	width: 32%;
+	height: 100%;
+	float: left;
+	text-align: center; 
+}
+.logo img{
+	width: auto;
+	height: 100%;
+}
+.navegador{
+	width: 41%;
+	height: 100%;
+	float: left;
+	
+}
+.ingresar{
+width: 20%;
+height: 100%;
+float: left;
+}
+.idiomas{
+width: 7%;
+height: 100%;
+float: left;	
+}
+/*nivel 0*/
+nav ul{
+	list-style: none;
+}
+nav ul li{
+	display: inline-block;
+	width: 32%;
+}
+nav ul li:hover ul{
+	display: block;
+}
+nav .ingresar ul li{
+	width: 100%;
+}
+nav .idiomas ul li{
+	width: 100%;
+}
+nav ul li a{
+	display: block;
+	text-decoration: none;
+	color: #074675;
+	padding: 20px 5px;
+	text-align: center;
+}
+nav ul li a:hover{
+background: rgba(0,0,0,0.1);
+}
+/*nivel l*/
+nav li ul{
+	display: none;
+}
+nav li ul li{
+    
+}
+/*nivel 2*/
+nav li ul li ul{
+    
+}
+
+/*gif fondo*/
+.imagen-empresa{
+	width: 100%;
+	height: 565px;
+	background-image: url("http://localhost:8080/dragasoft/faces/resources/imagenes/ingles.gif");
+	background-size: 100% 100%;
+}
+.espace{
+	width: 100%;
+	height: 60px;
+}
+/*nosotros*/
+.nos{
+	width: 100%;
+	height: 300px;
+}
+.nosotros{
+	width: 16%;
+	height: 100%;
+	float: left;
+	color: #074675;
+	padding: 5px 10px;
+	font-size: 2vw;
+}
+.mis{
+	width: 42%;
+	height: 100%;
+	float: left;
+	padding: 20px 0px;
+}
+.mision{
+	width: 90%;
+	height: 90%;
+	background: #F2E8B3;
+}
+.mision h2{
+	text-align: center;
+	font-size: 2vw;
+	padding: 10px;
+}
+.mision p{
+	margin: 2px 5px;
+	font-size: 1.5vw;
+}
+.vis{
+	width: 42%;
+	height: 100%;
+	float: left; 
+	padding: 20px 0px;
+}
+.vision{
+	width: 90%;
+	height: 90%;
+	padding: 10px 10px;
+	background: #F2E8B3;
+}
+.vision h2{
+	text-align: center;
+	font-size: 2vw;
+}
+.vision p{
+	margin: 13px 5px;
+	font-size: 1.5vw;
+} 
+/*servicios*/
+.servicios{
+	width: 100%;
+	padding-top: 30px;
+	height: 300px;
+	border-top: 1px solid black;
+	
+}
+.nombre{
+	width: 16%;
+	height: 100%;
+	float: left;
+	font-size: 2vw;
+	padding: 5px 10px;
+	color: #074675;
+} 
+.inventario{
+	width: 28%;
+	height: 100%;
+	float: left;
+	color: #7A4E02;
+	text-align: center;
+	padding: 10px;
+}
+
+.inventario h2{
+	font-size: 1.7vw;
+}
+
+.inventario img{
+	width: 11vw;
+	height: 11vw;
+	border-radius: 50%;
+	margin: 10px;
+}
+.mantenimiento{
+	width: 28%;
+	height: 100%;
+	float: left;	
+	color: #7A4E02;
+	text-align: center;
+	padding: 10px;
+}
+
+.mantenimiento h2{
+	font-size: 1.7vw;
+}
+
+.mantenimiento img{
+	width: 11vw;
+	height: 11vw;
+	border-radius: 50%;
+	margin: 10px;
+}
+.control{
+	width: 28%;
+	height: 100%;
+	float: left;
+	color: #7A4E02;
+	text-align: center;
+	padding: 10px;
+}
+
+.control h2{
+	font-size: 1.7vw;
+}
+
+.control img{
+	width: 11vw;
+	height: 11vw;
+	border-radius: 50%;
+	margin: 10px;
+}
+/*footer*/
+.contactenos{
+/*	width: 100%*/
+	height: 100px;
+	border-top: 1px solid black;
+}
+.contactenos a{
+	text-decoration: none;
+	color: #074675;
+	padding: 3px;
+}
+.mapa{
+	width: 35%;
+	height: 100%;
+	float: left;
+}
+.mapa iframe{
+	width: 100%;
+	height: 100%;
+
+}
+.redes{
+	width: 65%;
+	height: 100%;
+	background: #0000.5;
+	float: left;
+}
+button{
+/*	width: 100%*/
+	font-size: 1.5vw;
+	color: #074675; 
+	border:none;
+	background: #fff;
+	font-family: 'IBM Plex Sans', sans-serif;
+
+}
+.correo{
+	width: 100%;
+	height: 25%;
+	font-size: 1.5vw; 
+	font-family: 'IBM Plex Sans', sans-serif;
+	padding: 10px 40px;
+
+}
+.direccion{
+	width: 100%;
+	height: 25%;
+	font-size: 1.5vw;
+	font-family: 'IBM Plex Sans', sans-serif;
+	padding: 10px 40px;
+}
+.sociales{
+	width: 100%;
+	height: 25%;
+	font-size: 1.5vw; 
+	font-family: 'IBM Plex Sans', sans-serif;
+	padding:10px 40px;
+}
+
+.redes1{
+width: 60%;
+height: -10px;
+float: right;	
+padding: -15px -30px;
+}
+
+.copyright{
+width: 60%;
+height: 100%;
+font-size: 1vw; 
+color: #074675; 
+border:none;
+background: #fff;
+font-family: 'IBM Plex Sans', sans-serif;
+float: left;
+text-align: center; 
+}
+
+
+
+
+root { 
+    display: block;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3a4f54;
+    
+    font-size: small;
+}
+
+a {
+    color: #e33b06;
+}
+
+table {
+    empty-cells: show;
+}
+
+form.jsfcrud_list_form th, td th {
+    font-size: x-small;
+    color: #4e6a71;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #90b4bd;
+    border-right-color: #90b4bd;
+    letter-spacing: 3px;
+    text-align: left;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #b2d5d6;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: small;
+}
+
+form.jsfcrud_list_form td, td td {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #b2d5d6;
+    border-right-color: #b2d5d6;
+    vertical-align: baseline;
+    padding-bottom: 0px;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #fefeff;
+    color: #4e6a71;
+}
+
+
+tr.jsfcrud_even_row {
+    background-color: #eff5fa;
+    color: #4e6a71;
+}
+
+#busyImage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
